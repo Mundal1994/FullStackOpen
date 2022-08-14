@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import React from 'react'
 
+/*  displays the most voted anecdote onto the browser */
+
 const MostVoted = (props) => {
   var i = 0
   var mostVotes = -1
@@ -24,17 +26,26 @@ const MostVoted = (props) => {
       )
 }
 
+/*  displays the amount of votes of the current anecdote */
+
 const Votetext = (props) => {
     return (
         <p>has {props.points} votes</p>
     )
 }
 
+/* 
+**  calls the passed in function through props.handleClick
+**  and displays button with text
+*/
+
 const Button = (props) => (
   <button onClick={props.handleClick}>
     {props.text}
   </button>
 )
+
+/*  doing the main logic of displaying the webpage */
 
 const App = () => {
   const anecdotes = [

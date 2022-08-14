@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import React from 'react'
 
+/*  adds cells with corresponding values to the HTML table  */
+
 const StatisticLine = props => {
   const text = props.text
   if (text === "positive")
@@ -18,6 +20,8 @@ const StatisticLine = props => {
         </tr>
       )
 }
+
+/*  Only displays the statistics if a button has been clicked */
 
 const Statistics = (props) => {
   const showText = props.all
@@ -42,11 +46,18 @@ const Statistics = (props) => {
       )
 }
 
+/* 
+**  calls the passed in function through props.handleClick
+**  and displays button with text
+*/
+
 const Button = (props) => (
   <button onClick={props.handleClick}>
     {props.text}
   </button>
 )
+
+/*  takes care of the main logic of the webpage */
 
 const App = () => {
   const [good, setGood] = useState(0)
