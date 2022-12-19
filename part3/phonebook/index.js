@@ -59,20 +59,34 @@ const generateId = () => {
     return maxId + 1
 }
 
+function valueExist(name)
+{
+    for (var i = 0; i < notes.length; i++)
+    {
+        if (notes[i].name == name)
+            return (1)
+    }
+    return (0)
+}
+
 app.post('/api/persons', (request, response) => {
     const body = request.body
 
-    if (!body.content) {
+    if (!body.name) {
         return response.status(400).json({
             error: 'content missing'
         })
     }
+    else if (valueExist(body.name) == 1) {
+        return response.status(400).json({
+            error: 'name must be unique'
+        })
+    }
 
     const note = {
-        content: body.content,
-        important: body.important || false,
-        date: new Date(),
         id: generateId(),
+        name: body.name,
+        number: body.number
     }
     
     notes = notes.concat(note)
