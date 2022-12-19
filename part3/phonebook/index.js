@@ -25,12 +25,8 @@ let notes = [
         "number": "39-23-6423122"
     }
 ]
-/*
-Sat Jan 22 2022 22:27:20 GMT+0200 (eastern europeand standard time)
-*/
 
 app.get('/info', (request, response) => {
-    console.log("length", notes.length)
     const people = '<p>Phonebook has info for ' + notes.length + ' people</p>'
     var dateString = new Date().toUTCString();
     response.send(people + dateString)
@@ -53,7 +49,6 @@ app.get('/api/persons/:id', (request, response) => {
 app.delete('/api/persons/:id', (request, response) => {
     const id = Number(request.params.id)
     notes = notes.filter(note => note.id !== id)
-  
     response.status(204).end()
   })
 
