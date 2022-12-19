@@ -23,5 +23,8 @@
   "homepage": "https://github.com/Mundal1994/FullStackOpen#readme",
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
