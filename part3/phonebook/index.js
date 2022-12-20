@@ -1,7 +1,10 @@
 const express = require('express')
+const morgan = require('morgan')
+
 const app = express()
 
 app.use(express.json())
+app.use(morgan("tiny"))
 
 let notes = [
     { 
@@ -92,7 +95,35 @@ app.post('/api/persons', (request, response) => {
     notes = notes.concat(note)
     response.json(note)
 })
+/* start of added section *//*
+morgan.token('id', function getId (req) {
+    return req.id
+  })
 
+app.use(assignId)
+app.use(morgan(':id :method :url :response-time'))
+
+function assignId (req, res, next) {
+    req.id = uuid.v4()
+    next()
+  }*/
+/*
+const requestLogger = (request, response, next) => {
+    console.log('Method: ', request.method)
+    console.log('Path: ', request.path)
+    console.log('Body: ', request.body)
+    console.log('---')
+    next()
+}
+
+app.use(requestLogger)
+*/
+const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint)
+/* end of added section */
 const PORT = 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
