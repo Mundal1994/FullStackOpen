@@ -93,7 +93,6 @@ const App = () => {
   const [showList, setShowList] = useState([])
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
-  let lastId = 0;
 
   useEffect(() => {
     axios
@@ -142,12 +141,12 @@ const App = () => {
     }
     else
     {
+      let lastId = persons[persons.length - 1].id
       const nameObject = {
         name: newName.name,
         number: newName.number,
-        id: lastId,
+        id: lastId + 1,
       }
-      lastId += 1
       personComponent
         .create(nameObject)
       setPersons(persons.concat(nameObject))
