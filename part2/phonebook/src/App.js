@@ -93,10 +93,11 @@ const App = () => {
   const [showList, setShowList] = useState([])
   const [message, setMessage] = useState(null)
   const [messageType, setMessageType] = useState(null)
+  let lastId = 0;
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/api/persons')
+      .get('/api/persons')
       .then(response => {
         setPersons(response.data)
         setShowList(response.data)
@@ -141,12 +142,12 @@ const App = () => {
     }
     else
     {
-      let lastId = persons[persons.length - 1].id
       const nameObject = {
         name: newName.name,
         number: newName.number,
-        id: lastId + 1,
+        id: lastId,
       }
+      lastId += 1
       personComponent
         .create(nameObject)
       setPersons(persons.concat(nameObject))
