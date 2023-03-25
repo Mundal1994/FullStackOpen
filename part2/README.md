@@ -29,7 +29,7 @@ for seeing the information on the server side open it on port 3001 with the foll
 npx json-server --port 3001 --watch db.json
 
 
-## Frontend production build
+## Frontend production build of phonebook
 
 A production build of applications created with create-react-app can be created with the command 
     

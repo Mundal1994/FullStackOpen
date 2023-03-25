@@ -23,5 +23,3 @@ Implement following features
 - connect backend to the frontend of part2/phonebook
 - deploy the backend to the internet using Fly.io or Render
 - Generate a production build of your frontend, and add it to the internet application using the method introduced in this part.
-
-Checkout the end result: 
